@@ -6,6 +6,8 @@
 package lendle.courses.wp.layouts;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -30,7 +32,20 @@ public class BorderLayoutSample2 {
         
         //1. create five CustomComponents, add them to North, West, South, East, Center
         //2. change the preferred size of CustomComponent
+        JButton button1=new JButton("1");
+        frame.add(button1, "North");
+        button1.setPreferredSize(new Dimension(100, 100));
         
+        CustomComponent c=new CustomComponent();
+        frame.add(c, "West");
+        JButton button3=new JButton("3");
+       
+        frame.add(button3, "South");
+        JButton button4=new JButton("4");
+        frame.add(button4, "East");
+        button4.setPreferredSize(new Dimension(100, 100));
+        JButton button5=new JButton("5");
+        frame.add(button5);
         //////////////////////////////////////////////////////////////////////
         
         frame.setVisible(true);
