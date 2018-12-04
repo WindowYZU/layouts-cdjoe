@@ -38,8 +38,8 @@ public class BorderLayoutSample2 {
         
         CustomComponent c=new CustomComponent();
         frame.add(c, "West");
-        JButton button3=new JButton("3");
-       
+        JButton button3=new JButton("3");      
+        
         frame.add(button3, "South");
         JButton button4=new JButton("4");
         frame.add(button4, "East");

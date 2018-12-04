@@ -5,8 +5,11 @@
  */
 package lendle.courses.wp.layouts;
 
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
 
@@ -29,10 +32,28 @@ public class SpringLayoutSample {
         
         JLabel label=new JLabel("label");
         //layout the label to (5, 5)
-        
+        layout.putConstraint(SpringLayout.WEST, label, 5, SpringLayout.WEST, frame.getContentPane());
+        layout.putConstraint(SpringLayout.NORTH, label, 5, SpringLayout.NORTH, frame.getContentPane());
+        layout.putConstraint(SpringLayout.SOUTH, label, 5, SpringLayout.SOUTH, frame.getContentPane());
         ////////////////////////////
-        
-        frame.add(label);
+        frame.setLayout(layout);
+       
+        JScrollPane scroll=new JScrollPane();
+        JPanel container=new JPanel(){
+            @Override
+            public Dimension getPreferredSize(){
+                int count=this.getComponentCount();
+                if(count>0){
+                    int total=count*this.getComponent(0).getPreferredSize().width;
+                    int row=(int)Math.ceil(total/500);
+                    return new Dimension(500, this.getComponent(0).getPreferredSize().height*row+20*(row));
+                }
+                return new Dimension(500, 1);
+            }
+        };
+        scroll.getViewport().add(container);
+        frame.add(scroll, "Center");
+       // frame.add(label);
         frame.setVisible(true);
     }
 
